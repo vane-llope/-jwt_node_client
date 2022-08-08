@@ -1,18 +1,32 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <button type="submit" @click="login">Login</button>
+    <button type="submit" @click="logout">logout</button>
+  
+   
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import axios from 'axios'
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld
-  }
+  data() {
+    return {
+      email : '',
+      password : ''
+    }
+  },
+ methods: {
+    login(){
+       axios.get('http://localhost:3000/login',{withCredentials: true})
+     
+    },
+    logout(){
+        axios.get('http://localhost:3000/logout',{withCredentials: true})
+    }
+ },
 }
 </script>
